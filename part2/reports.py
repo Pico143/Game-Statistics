@@ -119,7 +119,7 @@ def get_date_avg(file_name):
     average = 0
     for game in games:
         average += int(game[2])
-    average = int(average / len(games)) + int(average % len(games) > 0 )
+    average = int(average / len(games)) + int(average % len(games) > 0)
     return average
 
 
@@ -132,11 +132,10 @@ def get_game(file_name, title):
     for item in games:
         if item[0].lower() == title:
             game = item
-    if game == None:
-        raise ValueError ("This game is not in the file!")
-    else:
-        game[1] = float(game[1])
-        game[2] = int(game[2])
+        if game == None:
+            raise ValueError ("This game is not in the file!")
+    game[1] = float(game[1])
+    game[2] = int(game[2])
     return game
 
 
