@@ -38,14 +38,12 @@ def print_decide(file_name):
         print("No, there is not a single game in the file that was made in year {}.\n".format(year))
 
 
-
 def print_count_by_genre(file_name):
     os.system('clear')
     print("You wanted to know how many games there are from a certain genre.")
     genre = input("Please provide a genre you wanted. ")
     count = reports.count_by_genre(file_name, genre)
     print("There are {} games in the file that represent {} genre.\n".format(count, genre))
-
 
 
 def print_line_number(file_name):
@@ -60,7 +58,6 @@ def print_line_number(file_name):
         print("This game is in line number {} of the file.\n".format(line))
 
 
-
 def print_sort_abc(file_name):
     os.system('clear')
     games_sorted = reports.sort_abc(file_name)
@@ -69,19 +66,20 @@ def print_sort_abc(file_name):
         print(item)
     print("\n")
 
+
 def print_get_genres(file_name):
     genres = reports.get_genres(file_name)
-    print ("Here's a list of all the genres appearing in the file. ")
+    print("Here's a list of all the genres appearing in the file. ")
     for item in genres:
-        print (item)
-    print ("\n")
+        print(item)
+    print("\n")
 
 
 def print_top_fps(file_name):
     try:
         top_sold = reports.when_was_top_sold_fps(file_name)
     except:
-        print ("There is no First-person shooter game in the file!\n")
+        print("There is no First-person shooter game in the file!\n")
     else:
         print("The top sold First-person shooter game in the file is from year {}.\n".format(top_sold))
 
