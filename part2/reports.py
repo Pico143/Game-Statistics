@@ -1,6 +1,7 @@
 # Report functions
 
-def get_genres(file_name): #importowane z pierwszego zadania jako funkcja pomocnicza
+
+def get_genres(file_name):  # importowane z pierwszego zadania jako funkcja pomocnicza
     with open(file_name, 'r', encoding='utf-8') as f:
         text = f.read()
         games = split(text)
@@ -10,7 +11,7 @@ def get_genres(file_name): #importowane z pierwszego zadania jako funkcja pomocn
         return genres
 
 
-def count_by_genre(file_name, genre): #importowane z pierwszego zadania jako funkcja pomocnicza
+def count_by_genre(file_name, genre):  # importowane z pierwszego zadania jako funkcja pomocnicza
     counter = 0  # licznik gier znajdujących się na liście należących do gatunku
     with open(file_name, 'r', encoding='utf-8') as f:
         text = f.read()
@@ -50,7 +51,7 @@ def insertion_sort_year(games):
             while n > 0:
                 if games[n][1] > games[n-1][1]:
                     games[n], games[n-1] = games[n-1], games[n]
-                elif games[n][1] == games[n-1][1]: #jeżeli rok jest ten sam, przechodzimy do sortowania alfabetycznego
+                elif games[n][1] == games[n-1][1]:  # jeżeli rok jest ten sam, przechodzimy do sortowania alfabetycznego
                     temp = min(len(games[n]), len(games[n-1]))
                     for i in range(temp):  # algorytm z poprzedniego zadania
                         if ord(games[n][0][i].lower()) < ord(games[n-1][0][i].lower()):
@@ -70,14 +71,15 @@ def split(format_me):  # funkcja pomocnicza rozbijająca zawartość pliku na li
         lines[index] = line.split("\t")
     return lines
 
+
 def get_most_played(file_name):
     with open(file_name, 'r', encoding='utf-8') as f:
         text = f.read()
     games = split(text)
-    most_played = ('',0)
+    most_played = ('', 0)
     for game in games:
         if float(game[1]) > most_played[1]:
-            most_played = (game[0],float(game[1]))
+            most_played = (game[0], float(game[1]))
     return most_played[0]
 
 
@@ -100,6 +102,7 @@ def get_selling_avg(file_name):
         average += float(game[1])
     average /= len(games)
     return average
+
 
 def count_longest_title(file_name):
     with open(file_name, 'r', encoding='utf-8') as f:
@@ -132,8 +135,8 @@ def get_game(file_name, title):
     for item in games:
         if item[0].lower() == title:
             game = item
-        if game == None:
-            raise ValueError ("This game is not in the file!")
+    if game == []:
+        raise ValueError("This game is not in the file!")
     game[1] = float(game[1])
     game[2] = int(game[2])
     return game
@@ -141,8 +144,8 @@ def get_game(file_name, title):
 
 def count_grouped_by_genre(file_name):
     group = get_genres(file_name)
-    for i in range (len(group)):
-        group[i] = [group[i],count_by_genre(file_name,group[i])]
+    for i in range(len(group)):
+        group[i] = [group[i], count_by_genre(file_name, group[i])]
     group = dict(group)
     return group
 
@@ -152,7 +155,7 @@ def get_date_ordered(file_name):
         text = f.read()
     games = split(text)
     for i in range(len(games)):
-        games[i] = (games[i][0],games[i][2])
+        games[i] = (games[i][0], games[i][2])
     games = insertion_sort_year(games)
     for i in range(len(games)):
         games[i] = games[i][0]
