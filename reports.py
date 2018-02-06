@@ -53,7 +53,7 @@ def decide(file_name, year):
 
 
 def get_latest(file_name):
-    '''Funkcja wyszukuje najnowszą grę z listy i zwraca jej nazwę; 
+    '''Funkcja wyszukuje najnowszą grę z listy i zwraca jej nazwę;
     jeśli z tego samego roku jest kilka gier, zwraca pierwszą na liście'''
     temp = ('None', 0)  # przechowuje nazwę i rok produkcji najnowszej gry dotychczas znalezionej na liście
     with open(file_name, 'r', encoding='utf-8') as f:
@@ -88,7 +88,7 @@ def get_line_number_by_title(file_name, title):
         for index, line in enumerate(games):
             if title.lower() == line[0].lower():
                 return index+1
-        raise ValueError
+        raise ValueError("Game not in file!")
 
 
 def sort_abc(file_name):
@@ -120,6 +120,6 @@ def when_was_top_sold_fps(file_name):
                 if float(game[1]) > float(most_sold[0]):
                     most_sold = (game[1], game[2])
         if most_sold == (0, 0):
-            raise ValueError
+            raise ValueError("No FPS game in file!")
         else:
             return int(most_sold[1])

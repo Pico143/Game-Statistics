@@ -78,7 +78,7 @@ def print_get_genres(file_name):
 def print_top_fps(file_name):
     try:
         top_sold = reports.when_was_top_sold_fps(file_name)
-    except:
+    except ValueError:
         print("There is no First-person shooter game in the file!\n")
     else:
         print("The top sold First-person shooter game in the file is from year {}.\n".format(top_sold))
