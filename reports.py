@@ -1,5 +1,4 @@
 # Report functions
-import string
 
 
 def insertion_sort(games):
